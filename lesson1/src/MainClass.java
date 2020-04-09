@@ -16,6 +16,7 @@ public class MainClass {
         isPositiveOrNegative(-9);
         isNegativeNumber(8);
         helloName("Алёна");
+        leapYear(2020);
     }
 
     /**
@@ -60,6 +61,18 @@ public class MainClass {
      */
     static void helloName(String name) {
         System.out.println(String.format("Hello, %s!", name));
+    }
+
+    /**
+     * 8*. Написать метод, который определяет является ли год високосным, и выводит сообщение в консоль.
+     * Каждый 4-й год является високосным, кроме каждого 100-го, при этом каждый 400-й – високосный
+     */
+    static void leapYear(int year){
+        if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+            System.out.println("Год високосный");
+        } else {
+            System.out.println("Год не високосный");
+        }
     }
 
 }
