@@ -32,7 +32,7 @@ public class MainClass {
      * 10 до 20(включительно), если да – вернуть true, в противном случае – false
      */
     static boolean sum10to20(int x1, int x2) {
-        return x1 + x2 >= 10 || x1 + x2 <= 20;
+        return x1 + x2 >= 10 && x1 + x2 <= 20;
     }
 
     /**
