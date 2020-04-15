@@ -97,12 +97,12 @@ public class MainClass {
      * (может быть положительным, или отрицательным), при этом метод должен сместить все элементымассива на n позиций.
      * Для усложнения задачи нельзя пользоваться вспомогательными массивами.
      */
-    static void seventhTask(int[] array, int n) {
+    private static void seventhTask(int[] array, int n) {
         System.out.println(Arrays.toString(array));
         int index = 0;
         int indexSwap;
         int x = -1;
-        while (true) {
+        do {
             indexSwap = (index + n) % array.length;
             if (index > 0) {
                 int y = array[indexSwap];
@@ -113,10 +113,7 @@ public class MainClass {
                 array[indexSwap] = array[index];
             }
             index = indexSwap;
-            if (index == 0) {
-                break;
-            }
-        }
+        } while (index != 0);
         System.out.println(Arrays.toString(array));
     }
 }
