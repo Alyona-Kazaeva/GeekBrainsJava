@@ -15,16 +15,16 @@ public class MainClass {
      * 1 – да / 0 – нет»(1 – повторить, 0 – нет).
      */
     private static void guessNumber() {
-        int number = (int) (Math.random() * 9);
+        int secretNumber = (int) (Math.random() * 9);
         System.out.println("Давай поиграем, угадайте число от 0 до 9");
-        int input_number;
+        int inputNumber;
         for (int i = 0; i < 3; i++) {
-            input_number = scanner.nextInt();
-            if (input_number == number) {
+            inputNumber = scanner.nextInt();
+            if (inputNumber == secretNumber) {
                 printAnswer("Вы угадали! Повторить игру еще раз?/ 1 – да / 0 – нет");
             } else if (i == 2) {
                 printAnswer("Вы проиграли! Повторить игру еще раз?/ 1 – да / 0 – нет");
-            } else if (input_number > number) {
+            } else if (inputNumber > secretNumber) {
                 System.out.println("Ваше число больше загаданного, введите другое число");
             } else {
                 System.out.println("Ваше число меньше загаданного, введите другое число");
