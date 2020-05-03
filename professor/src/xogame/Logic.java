@@ -2,7 +2,6 @@ package xogame;
 
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Logic {
     static int SIZE;
@@ -16,30 +15,36 @@ public class Logic {
 
     static Random random = new Random();
     static boolean gameFinished = false;
+    static boolean noWin = true;
     static String resultText = "";
+    static WinLineInfo winLineInfo;
 
     public static void go() {
         gameFinished = true;
             printMap();
             if (checkWinLines(DOT_X)) {
                 resultText = "Ты Супер победитель!";
+                noWin = false;
                 return;
             }
 
             if (isFull()) {
                 resultText = "Ничья...";
+                noWin = true;
                 return;
             }
 
-            aiTurn();
-            printMap();
-            if (checkWinLines(DOT_O)) {
-                resultText = "ИИ нынче очень развито, компьютер победил!";
-                return;
-            }
-            if (isFull()) {
-                resultText = "Ничья...";
-                return;
+        aiTurn();
+        printMap();
+        if (checkWinLines(DOT_O)) {
+            resultText = "ИИ нынче очень развито, компьютер победил!";
+            noWin = false;
+            return;
+        }
+        if (isFull()) {
+            resultText = "Ничья...";
+            noWin = true;
+            return;
             }
         gameFinished = false;
     }
@@ -159,7 +164,7 @@ public class Logic {
                 return false;
             }
         }
-
+        winLineInfo = new WinLineInfo(cy, cx, vy, vx);
         return true;
     }
 

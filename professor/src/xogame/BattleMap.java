@@ -22,7 +22,6 @@ public class BattleMap extends JPanel {
 
     private boolean isInit = false;
 
-
     public BattleMap(GameWindow gameWindow) {
         this.gameWindow = gameWindow;
         setBackground(Color.LIGHT_GRAY);
@@ -44,6 +43,8 @@ public class BattleMap extends JPanel {
             Logic.setHumanXY(cellX, cellY);
         }
         if (Logic.gameFinished) {
+            repaint();
+
             new GameResultDialog(Logic.resultText, actionEvent -> {
                 Logic.initMap();
                 Logic.printMap();
@@ -95,6 +96,17 @@ public class BattleMap extends JPanel {
                     drawX(g, j, i);
                 }
             }
+        }
+        if (Logic.gameFinished && !Logic.noWin) {
+            WinLineInfo w = Logic.winLineInfo;
+            g.setStroke(new BasicStroke((float) (cellWidth * 0.1)));
+            g.setColor(new Color(0, 255, 0));
+            g.drawLine(
+                    w.getCx() * cellWidth + cellWidth / 2,
+                    w.getCy() * cellHeight + cellWidth / 2,
+                    w.getCx() * cellWidth + cellWidth / 2 + (w.getVx() * cellWidth * Logic.DOTS_TO_WIN) - w.getVx() * cellWidth,
+                    w.getCy() * cellWidth + cellWidth / 2 + (w.getVy() * cellWidth * Logic.DOTS_TO_WIN) - w.getVy() * cellWidth
+            );
         }
     }
 

@@ -8,10 +8,12 @@ public class GameResultDialog {
 
     public GameResultDialog(String labelText, ActionListener actionListener) {
         JDialog dialog = new JDialog();
+        dialog.setResizable(false);
         dialog.setSize(300, 150);
         dialog.setLocation(550, 400);
         dialog.setLayout(new BoxLayout(dialog.getContentPane(), BoxLayout.Y_AXIS));
         dialog.setTitle("Результат игры");
+
 
         JLabel label = new JLabel(labelText);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
